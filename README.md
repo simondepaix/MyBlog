@@ -2,7 +2,9 @@
 
 # MyBlog partie 2
 ## consignes : 
-- maintenant que l'architecture du dossier est prête. Vous allez devoir remettre de l'ordre pour que le site fonctionne de nouveau et, en php !
-- modifiez l'extension des fichiers, remettez les bons chemins..
-- vous allez également devoir découper les bouts de code redondant pour en faire des layouts / partials / main
+Nous allons commencer par mettre en place le router.
+- Créez un un tableau AVAIABLE_ROUTES qui va contenir la liste de nos routes disponibles associées sou la forme "nomroute"=>"nomController"
+- Récupérez le param GET 
+- Si le param GET correspond à une des clef de notre tableau AVAIABLE_ROUTES, on récupère le nom du controller, on le stock dans une variable.
+
     
