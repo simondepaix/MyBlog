@@ -2,19 +2,7 @@
 
 # MyBlog partie 6
 ## consignes : 
-Maintenant que la BDD est mise en place, nous allons mettre en place le modèle. Ce fichier sera la représentation en code de la table
-Ensuite, nous allons récupérer la data depuis la bdd et la mettre en forme dans la vue
-
-- Créez la classe BlogModel
-- Cette classe est la représentation de la table donc elle aura autant de propriétés que la table à de champs
-- Créez les méthodes getPosts($limit) et getPostById($id)
-Ces deux méthodes doivent :  
-- se connecter à la BDD
-- retourner le résultat de la bonne requête SQL avec PDO
-- Astuce, utilisez PDO::FETCH_CLASS pour retourner vos articles sous la forme de votre classe
-
-Côté controller :
-- Appelez la méthode getPosts($limit) et stockez sa valeur de retour dans une variable
-- Faite un var_dump() de cette variable pour visualiser les données
-
+Halleluja, c'était pas simple mais on à réussi à récupérer les données depuis notre bdd et à les afficher grâce à un var_dump().
+Maintenant, nous allons bien sûr mettre en place ces data dans la vue home.
+- Créez une boucle foreach dans la vue home et mettez en forme les <!-- Post preview--> 
 
