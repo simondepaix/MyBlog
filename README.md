@@ -7,7 +7,7 @@ Ensuite, nous allons récupérer la data depuis la bdd et la mettre en forme dan
 
 - Créez la classe BlogModel
 - Cette classe est la représentation de la table donc elle aura autant de propriétés que la table à de champs
-- Créez les méthodes getPosts($limit) et getAllPostById($id)
+- Créez les méthodes getPosts($limit) et getPostById($id)
 Ces deux méthodes doivent :  
 - se connecter à la BDD
 - retourner le résultat de la bonne requête SQL avec PDO
