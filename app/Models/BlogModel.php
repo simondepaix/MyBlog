@@ -1,34 +1,49 @@
 <?php
 
-class BlogModel{
+class BlogModel
+{
     private $id;
     private $img;
     private $date;
     private $title;
     private $content;
-    
-    public function getPosts($limit){
+
+    public function getPosts($limit)
+    {
         try {
-            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');            
+            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }
 
-        if(!empty($limit)){
-            $query = $dbh->prepare('SELECT * FROM post LIMIT '.$limit);
-        }else{
-            $query = $dbh->prepare('SELECT * FROM post');        
+        if (!empty($limit)) {
+            $query = $dbh->prepare('SELECT * FROM post LIMIT ' . $limit);
+        } else {
+            $query = $dbh->prepare('SELECT * FROM post');
         }
 
         $query->execute();
-        $posts = $query->fetchAll(PDO::FETCH_CLASS,'BlogModel');
+        $posts = $query->fetchAll(PDO::FETCH_CLASS, 'BlogModel');        
         return $posts;
-     
     }
 
-    public function getPostById($id){
-
+    public function getPostById($id)
+    {
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }        
+        $query = $dbh->prepare('SELECT * FROM post WHERE id=:id');
+        $params = [
+            'id'=>$id
+        ];
+        $query->execute($params);
+        $query->setFetchMode(PDO::FETCH_CLASS, 'BlogModel');
+        $post = $query->fetch();            
+        return $post;
     }
 
     /**

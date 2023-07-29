@@ -4,6 +4,7 @@ require __DIR__.'/../app/Controllers/MainController.php';
 require __DIR__.'/../app/Controllers/HomeController.php';
 require __DIR__.'/../app/Controllers/ContactController.php';
 require __DIR__.'/../app/Controllers/AboutController.php';
+require __DIR__.'/../app/Controllers/BlogController.php';
 
 
 $base_uri = $_SERVER['REQUEST_URI'];
@@ -23,6 +24,10 @@ const AVAIABLE_ROUTES = [
         'action' => 'render',
         'controller' => 'MainController'
     ],
+    'post'=>[
+        'action' => 'renderPost',
+        'controller' => 'BlogController'
+    ],
     '404'=>[
         'action' => 'render',
         'controller' => 'ErrorController'
@@ -32,10 +37,14 @@ const AVAIABLE_ROUTES = [
 // initiatilisation des variables
 $page = 'home';
 $controller;
-
+$itemId=null;
 // s'il y a un param GET page, on le stock dans la var page sinon on redirige vers home
-if(isset($_GET['page']) && !empty($_GET['page'])){
+if(isset($_GET['page']) && !empty($_GET['page'])){    
     $page = $_GET['page'];
+    if(!empty($_GET['id'])){
+        $itemId = $_GET['id'];
+    }
+
 }else{
     $page = 'home';    
 }
@@ -50,7 +59,9 @@ if(array_key_exists($page,AVAIABLE_ROUTES)){
 }
 
 $pageController = new $controller();
-$pageController->$controllerAction($page);
+$pageController->setView($page);
+$pageController->setId($itemId);
+$pageController->$controllerAction();
 
 
 

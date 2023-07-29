@@ -18,13 +18,13 @@
             <?php foreach($data as $post): ?>
             <!-- Post preview-->
             <div class="post-preview">
-                <a href="post.html">
+                <a href="?page=post&id=<?= $post->getId(); ?>">
                     <h2 class="post-title"><?= $post->getTitle(); ?></h2>
                     <p><?= $post->getContent(); ?></p>
                 </a>
                 <p class="post-meta">
                     Posted by
-                    <a href="#!">Start Bootstrap</a>
+                    <a href="">Start Bootstrap</a>
                     <?= $post->getDate(); ?>
                 </p>
             </div>
