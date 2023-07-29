@@ -1,6 +1,11 @@
 <?php
-$base_uri = $_SERVER['REQUEST_URI'];
+require __DIR__.'/../app/Controllers/MainController.php';
+require __DIR__.'/../app/Controllers/HomeController.php';
+require __DIR__.'/../app/Controllers/ContactController.php';
+require __DIR__.'/../app/Controllers/AboutController.php';
 
+
+$base_uri = $_SERVER['REQUEST_URI'];
 // on require les fichiers (temporairement)
 
 // Variable contenant les routes dispo
@@ -24,11 +29,14 @@ if(isset($_GET['page']) && !empty($_GET['page'])){
 
 // Si la page demandée fait partie de notre tableau de routes, on la stocke dans la variable controller
 // sinon on redirige vers le controller ErrorController
-if(array_key_exists(AVAIABLE_ROUTES,$page)){
+if(array_key_exists($page,AVAIABLE_ROUTES)){
     $controller = AVAIABLE_ROUTES[$page];
 }else{
     $controller = 'ErrorController';
 }
+
+$pageController = new $controller();
+$pageController->render($page);
 
 
 
