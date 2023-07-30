@@ -19,6 +19,7 @@
             <!-- Post preview-->
             <div class="post-preview">
                 <a href="?page=post&id=<?= $post->getId(); ?>">
+                    <img src="assets/front/img/<?=$post->getImg();?>" alt="" class="img-fluid">
                     <h2 class="post-title"><?= $post->getTitle(); ?></h2>
                     <p><?= $post->getContent(); ?></p>
                 </a>
