@@ -3,7 +3,9 @@ class MainController{
     protected $view;
     protected $id;
     protected $data;
-    public function render(){             
+    public function render(){      
+
+        $base_uri = explode('/public/',$_SERVER['REQUEST_URI']);            
         $data = $this->data;                              
         require __DIR__.'/../views/front/layouts/header.phtml';
         require __DIR__."/../views/front/partials/$this->view.phtml";
