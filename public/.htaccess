@@ -1,0 +1,13 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /3Wblog/MyBlog/public/
+
+# Réécrire l'URL pour la page d'accueil
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/?$ index.php?page=$1 [QSA,L]
+
+# Réécrire l'URL pour les pages de posts
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^post/(\d+)/?$ index.php?page=post&id=$1 [QSA,L]
