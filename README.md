@@ -3,17 +3,18 @@
 # MyBlog partie 6
 ## consignes : 
 Fichiers .htaccess. allons réécrire les urls qui actuellement ne sont pas très optimisées avec les params directement dans l'url
-- créer le fichier .htaccess au niveau de index.php et collez le code suivant : 
+- créer le fichier .htaccess au niveau de index.php et collez le code suivant :
+- 
 Options +FollowSymLinks
 RewriteEngine On
 RewriteBase /3Wblog/MyBlog/public/
 
-# Réécrire l'URL pour la page d'accueil
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^/]+)/?$ index.php?page=$1 [QSA,L]
 
-# Réécrire l'URL pour les pages de posts
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^post/(\d+)/?$ index.php?page=post&id=$1 [QSA,L]
