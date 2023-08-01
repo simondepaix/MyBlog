@@ -1,10 +1,10 @@
 <?php
-require __DIR__.'/../app/Models/BlogModel.php';
+require __DIR__.'/../app/Models/PostModel.php';
 require __DIR__.'/../app/Controllers/MainController.php';
 require __DIR__.'/../app/Controllers/HomeController.php';
 require __DIR__.'/../app/Controllers/ContactController.php';
 require __DIR__.'/../app/Controllers/AboutController.php';
-require __DIR__.'/../app/Controllers/BlogController.php';
+require __DIR__.'/../app/Controllers/PostController.php';
 // echo '<pre>';
 // var_dump(__DIR__);
 // echo '</pre>';
@@ -24,7 +24,7 @@ const AVAIABLE_ROUTES = [
     ],
     'post'=>[
         'action' => 'renderPost',
-        'controller' => 'BlogController'
+        'controller' => 'PostController'
     ],
     '404'=>[
         'action' => 'render',
