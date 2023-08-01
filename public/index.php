@@ -2,11 +2,12 @@
 
 // Variable contenant les routes dispo
 const AVAIABLE_ROUTES = [
-    'home'=>'HomeController',
+    'accueil'=>'HomeController',
     'about'=>'AboutController',
     'contact'=>'ContactController',
     '404'=>'ErrorController'
 ];
+
 
 // initiatilisation des variables
 $page = 'home';
@@ -26,6 +27,6 @@ if(array_key_exists($page,AVAIABLE_ROUTES)){
 }else{
     $controller = 'ErrorController';
 }
-
+var_dump($controller);
 
 
