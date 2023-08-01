@@ -3,7 +3,7 @@ require __DIR__.'/../app/Controllers/MainController.php';
 require __DIR__.'/../app/Controllers/HomeController.php';
 require __DIR__.'/../app/Controllers/ContactController.php';
 require __DIR__.'/../app/Controllers/AboutController.php';
-require __DIR__.'/../app/Controllers/BlogController.php';
+require __DIR__.'/../app/Controllers/PostController.php';
 
 
 $base_uri = $_SERVER['REQUEST_URI'];
