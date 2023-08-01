@@ -25,7 +25,7 @@ const AVAIABLE_ROUTES = [
     ],
     'post'=>[
         'action' => 'renderPost',
-        'controller' => 'BlogController'
+        'controller' => 'PostController'
     ],
     '404'=>[
         'action' => 'render',

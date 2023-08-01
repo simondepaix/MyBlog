@@ -28,8 +28,22 @@ class PostModel{
      
     }
 
-    public function getPostById($id){
-
+    public function getPostById($id)
+    {
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }        
+        $query = $dbh->prepare('SELECT * FROM posts WHERE id=:id');
+        $params = [
+            'id'=>$id
+        ];
+        $query->execute($params);
+        $query->setFetchMode(PDO::FETCH_CLASS, 'PostModel');
+        $post = $query->fetch();            
+        return $post;
     }
 
     /**
