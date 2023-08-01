@@ -5,7 +5,7 @@
 Maintenant que la BDD est mise en place, nous allons mettre en place le modèle. Ce fichier sera la représentation en code de la table
 Ensuite, nous allons récupérer la data depuis la bdd et la mettre en forme dans la vue
 
-- Créez la classe BlogModel
+- Créez la classe PostModel
 - Cette classe est la représentation de la table donc elle aura autant de propriétés que la table à de champs
 - Créez les méthodes getPosts($limit) et getPostById($id)
 Ces deux méthodes doivent :  
