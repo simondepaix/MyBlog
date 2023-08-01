@@ -14,7 +14,7 @@ Ces deux méthodes doivent :
 - Astuce, utilisez PDO::FETCH_CLASS pour retourner vos articles sous la forme de votre classe
 
 Côté controller :
-- Appelez la méthode getPosts($limit) et stockez sa valeur de retour dans une variable
+- Appelez la méthode getPosts($limit) et stockez sa valeur de retour la propriété $data
 - Faite un var_dump() de cette variable pour visualiser les données
 
 
