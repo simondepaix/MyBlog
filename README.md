@@ -4,4 +4,4 @@
 ## consignes : 
 Nous pouvons désormais naviguer entre les différentes pages, mais les données de blog sur la home page sont encore fictives.
 - Nous allons donc mettre en place la BDD en s'appuyant sur le mcd suivant :
-https://raw.githubusercontent.com/simondepaix/MyBlog/myblog-partie5/mcd_bdd.png?token=GHSAT0AAAAAACEXIKXUEHOYGYO54FEQKFCIZGIYULQ
+![alt text](https://raw.githubusercontent.com/simondepaix/MyBlog/myblog-partie5/mcd_bdd.png?token=GHSAT0AAAAAACEXIKXUEHOYGYO54FEQKFCIZGIYULQ)
