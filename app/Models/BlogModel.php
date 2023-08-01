@@ -5,13 +5,12 @@ class BlogModel{
     private $img;
     private $date;
     private $title;
-    private $contenu;
+    private $content;
     private $user_id;
     
     public function getPosts($limit){
         try {
-            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');
-            echo 'connecté !';
+            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');            
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
@@ -108,17 +107,17 @@ class BlogModel{
     /**
      * Get the value of contenu
      */
-    public function getContenu()
+    public function getContent()
     {
-        return $this->contenu;
+        return $this->content;
     }
 
     /**
      * Set the value of contenu
      */
-    public function setContenu($contenu): self
+    public function setContent($content): self
     {
-        $this->contenu = $contenu;
+        $this->content = $content;
 
         return $this;
     }
