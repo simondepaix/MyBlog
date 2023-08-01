@@ -1,5 +1,4 @@
 <?php
-require __DIR__.'/../app/Models/BlogModel.php';
 require __DIR__.'/../app/Controllers/MainController.php';
 require __DIR__.'/../app/Controllers/HomeController.php';
 require __DIR__.'/../app/Controllers/ContactController.php';
