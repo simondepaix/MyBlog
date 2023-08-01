@@ -1,7 +1,4 @@
 <?php
-$base_uri = $_SERVER['REQUEST_URI'];
-
-// on require les fichiers (temporairement)
 
 // Variable contenant les routes dispo
 const AVAIABLE_ROUTES = [
