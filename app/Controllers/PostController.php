@@ -1,6 +1,6 @@
 <?php
 
-class BlogController extends MainController{
+class PostController extends MainController{
 
     public function renderPost(){
         $postModel = new PostModel();                  
