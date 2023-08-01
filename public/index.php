@@ -36,7 +36,5 @@ if(array_key_exists($page,AVAIABLE_ROUTES)){
 }
 
 $pageController = new $controller();
-$pageController->render($page);
-
-
-
+$pageController->setView($page);
+$pageController->render();
