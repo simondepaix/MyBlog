@@ -6,6 +6,7 @@ class BlogModel{
     private $date;
     private $title;
     private $contenu;
+    private $user_id;
     
     public function getPosts($limit){
         try {
@@ -118,6 +119,24 @@ class BlogModel{
     public function setContenu($contenu): self
     {
         $this->contenu = $contenu;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of user_id
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    /**
+     * Set the value of user_id
+     */
+    public function setUserId($user_id): self
+    {
+        $this->user_id = $user_id;
 
         return $this;
     }
