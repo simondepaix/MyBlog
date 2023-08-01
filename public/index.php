@@ -5,9 +5,9 @@ require __DIR__.'/../app/Controllers/HomeController.php';
 require __DIR__.'/../app/Controllers/ContactController.php';
 require __DIR__.'/../app/Controllers/AboutController.php';
 require __DIR__.'/../app/Controllers/BlogController.php';
-echo '<pre>';
-var_dump(__DIR__);
-echo '</pre>';
+// echo '<pre>';
+// var_dump(__DIR__);
+// echo '</pre>';
 // Variable contenant les routes dispo
 const AVAIABLE_ROUTES = [
     'home'=>[

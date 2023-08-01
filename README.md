@@ -2,7 +2,7 @@
 
 # MyBlog partie 6
 ## consignes : 
-Fichiers .htaccess. Nous allons réécrire les urls qui actuellement ne sont pas très optimisées avec les params directement dans l'url
+Fichiers .htaccess. allons réécrire les urls qui actuellement ne sont pas très optimisées avec les params directement dans l'url
 - créer le fichier .htaccess au niveau de index.php et collez le code suivant : 
 Options +FollowSymLinks
 RewriteEngine On
