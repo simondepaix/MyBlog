@@ -18,7 +18,7 @@
             <?php foreach($data as $post): ?>
             <!-- Post preview-->
             <div class="post-preview">
-                <a href="?page=post&id=<?= $post->getId(); ?>">
+                <a href="<?= $base_uri[0]; ?>/public/post/<?= $post->getId(); ?>">
                     <img src="assets/front/img/<?=$post->getImg();?>" alt="" class="img-fluid">
                     <h2 class="post-title"><?= $post->getTitle(); ?></h2>
                     <p><?= $post->getContent(); ?></p>
