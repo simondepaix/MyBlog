@@ -7,7 +7,7 @@ Nous pouvons désormais naviguer entre les différentes pages, mais les données
 ![alt text](https://raw.githubusercontent.com/simondepaix/MyBlog/myblog-partie5/mcd_bdd.png?token=GHSAT0AAAAAACEXIKXUEHOYGYO54FEQKFCIZGIYULQ)
 
 une fois fais, voici des données fictives que vous pouvez insérer dans la table posts :
-
+<pre>
 INSERT INTO posts (img, date, title, content,user_id)
 VALUES
     ('about-bg.jpg', '2023-07-29', 'Les meilleurs endroits à visiter en été', 'L\'été est la saison parfaite pour explorer de nouvelles destinations. Découvrez les meilleurs endroits à visiter pour des vacances inoubliables.',1),
@@ -21,3 +21,4 @@ VALUES
     ('about-bg.jpg', '2023-07-21', 'Comment créer un jardin biologique chez vous', 'Suivez nos conseils pratiques pour démarrer votre propre jardin biologique et cultiver des légumes sains.',1),
     ('about-bg.jpg', '2023-07-20', 'Découverte archéologique fascinante', 'Des archéologues ont récemment mis au jour une ancienne cité perdue qui pourrait réécrire l\'histoire de notre civilisation.',1);
     
+</pre>
