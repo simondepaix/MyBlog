@@ -1,6 +1,6 @@
 # Ce TP à pour but d'introduire au concept MVC et POO en php. Nous allons créer un blog en partant d'une base bootstrap.
 
-# MyBlog partie 6
+# MyBlog partie 9
 ## consignes : 
 Fichiers .htaccess. allons réécrire les urls qui actuellement ne sont pas très optimisées avec les params directement dans l'url
 - créer le fichier .htaccess au niveau de index.php et collez le code suivant :
