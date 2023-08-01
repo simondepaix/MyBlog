@@ -1,6 +1,6 @@
 <?php
 
-class BlogModel{
+class PostModel {
     private $id;
     private $img;
     private $date;
