@@ -1,49 +1,35 @@
 <?php
 
-class BlogModel
-{
+class BlogModel{
     private $id;
     private $img;
     private $date;
     private $title;
     private $content;
-
-    public function getPosts($limit)
-    {
+    private $user_id;
+    
+    public function getPosts($limit){
         try {
-            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');
+            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');            
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }
 
-        if (!empty($limit)) {
-            $query = $dbh->prepare('SELECT * FROM post LIMIT ' . $limit);
-        } else {
-            $query = $dbh->prepare('SELECT * FROM post');
+        if(!empty($limit)){
+            $query = $dbh->prepare('SELECT * FROM post LIMIT '.$limit);
+        }else{
+            $query = $dbh->prepare('SELECT * FROM post');        
         }
 
         $query->execute();
-        $posts = $query->fetchAll(PDO::FETCH_CLASS, 'BlogModel');        
+        $posts = $query->fetchAll(PDO::FETCH_CLASS,'BlogModel');
         return $posts;
+     
     }
 
-    public function getPostById($id)
-    {
-        try {
-            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');
-        } catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage() . "<br/>";
-            die();
-        }        
-        $query = $dbh->prepare('SELECT * FROM post WHERE id=:id');
-        $params = [
-            'id'=>$id
-        ];
-        $query->execute($params);
-        $query->setFetchMode(PDO::FETCH_CLASS, 'BlogModel');
-        $post = $query->fetch();            
-        return $post;
+    public function getPostById($id){
+
     }
 
     /**
@@ -119,7 +105,7 @@ class BlogModel
     }
 
     /**
-     * Get the value of content
+     * Get the value of contenu
      */
     public function getContent()
     {
@@ -127,11 +113,29 @@ class BlogModel
     }
 
     /**
-     * Set the value of content
+     * Set the value of contenu
      */
     public function setContent($content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of user_id
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    /**
+     * Set the value of user_id
+     */
+    public function setUserId($user_id): self
+    {
+        $this->user_id = $user_id;
 
         return $this;
     }
