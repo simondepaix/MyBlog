@@ -5,3 +5,4 @@
 Nous allons mettre en place PSR-4 : https://www.php-fig.org/psr/psr-4/
 - Vous allez devoir mettre en place l'autoload de composer.
 - Il va également falloir mettre en place les namespace
+
