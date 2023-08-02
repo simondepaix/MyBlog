@@ -26,7 +26,7 @@ class MainController{
     {
         $this->view = $view;
 
-        return $this;
+     
     }
 
     /**
@@ -44,6 +44,6 @@ class MainController{
     {
         $this->id = $id;
 
-        return $this;
+        
     }
 }
