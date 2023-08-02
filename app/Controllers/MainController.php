@@ -2,6 +2,7 @@
 class MainController{
     protected $view;    
     protected $data;
+    
     public function render(){             
         $data = $this->data;                              
         require __DIR__.'/../views/front/layouts/header.phtml';
@@ -21,11 +22,10 @@ class MainController{
     /**
      * Set the value of view
      */
-    public function setView($view): self
+    public function setView($view)
     {
         $this->view = $view;
 
-        return $this;
     }
 
 
@@ -41,10 +41,8 @@ class MainController{
     /**
      * Set the value of data
      */
-    public function setData($data): self
+    public function setData($data)
     {
-        $this->data = $data;
-
-        return $this;
+        $this->data = $data;        
     }
 }
