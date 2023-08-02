@@ -1,6 +1,6 @@
 # Ce TP à pour but d'introduire au concept MVC et POO en php. Nous allons créer un blog en partant d'une base bootstrap.
 
-# MyBlog partie 10
+# MyBlog partie 11
 ## consignes : 
 Dans notre PostModel, nous faisont la connexion à la bdd directement dans nos méthodes. 
 Ce n'est pas correct car on fait de la duplication de code et potentiellement des connexion simultanées.
