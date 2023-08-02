@@ -1,5 +1,7 @@
 <?php
 
+
+
 class PostController extends MainController{
 
     public function renderPost(){

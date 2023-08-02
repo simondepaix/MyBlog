@@ -1,10 +1,14 @@
 <?php
-require __DIR__.'/../app/Models/PostModel.php';
-require __DIR__.'/../app/Controllers/MainController.php';
-require __DIR__.'/../app/Controllers/HomeController.php';
-require __DIR__.'/../app/Controllers/ContactController.php';
-require __DIR__.'/../app/Controllers/AboutController.php';
-require __DIR__.'/../app/Controllers/PostController.php';
+require __DIR__.'/../vendor/autoload.php';
+
+ use App\Controllers\HomeController;
+// use App\Controllers\MainController;
+// require __DIR__.'/../app/Models/PostModel.php';
+// require __DIR__.'/../app/Controllers/MainController.php';
+// require __DIR__.'/../app/Controllers/HomeController.php';
+// require __DIR__.'/../app/Controllers/ContactController.php';
+// require __DIR__.'/../app/Controllers/AboutController.php';
+// require __DIR__.'/../app/Controllers/PostController.php';
 // echo '<pre>';
 // var_dump(__DIR__);
 // echo '</pre>';
@@ -55,8 +59,16 @@ if(array_key_exists($page,AVAIABLE_ROUTES)){
 }else{
     $controller = 'ErrorController';
 }
+// function my_autoloader($controller) {
+//     include __DIR__.'/../app/Controllers/'.$controller.'.php';
+// }
 
-$pageController = new $controller();
+// spl_autoload_register('my_autoloader');
+$namespace = 'App\Controllers';
+$controllerClassName = $namespace . '\\' . $controller;
+
+// Instanciation de la classe en utilisant le nom complet (namespace + nom de la classe)
+$pageController = new $controllerClassName();
 $pageController->setView($page);
 $pageController->setId($itemId);
 $pageController->$controllerAction();
