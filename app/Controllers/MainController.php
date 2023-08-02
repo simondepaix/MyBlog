@@ -1,4 +1,7 @@
 <?php
+namespace App\Controllers;
+
+
 class MainController{
     protected $view;
     protected $id;
