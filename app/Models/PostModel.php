@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Utility\DataBase;
 use \PDO;
 
 class PostModel{
@@ -12,17 +13,11 @@ class PostModel{
     private $user_id;
     
     public function getPosts($limit){
-        try {
-            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');            
-        } catch (\PDOException $e) {
-            print "Erreur !: " . $e->getMessage() . "<br/>";
-            die();
-        }
-
+        $dsn = DataBase::connectPDO();
         if(!empty($limit)){
-            $query = $dbh->prepare('SELECT * FROM posts LIMIT '.$limit);
+            $query = $dsn->prepare('SELECT * FROM posts LIMIT '.$limit);
         }else{
-            $query = $dbh->prepare('SELECT * FROM posts');        
+            $query = $dsn->prepare('SELECT * FROM posts');        
         }
 
         $query->execute();
@@ -33,13 +28,8 @@ class PostModel{
 
     public function getPostById($id)
     {
-        try {
-            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');
-        } catch (\PDOException $e) {
-            print "Erreur !: " . $e->getMessage() . "<br/>";
-            die();
-        }        
-        $query = $dbh->prepare('SELECT * FROM posts WHERE id=:id');
+        $dsn = DataBase::connectPDO();      
+        $query = $dsn->prepare('SELECT * FROM posts WHERE id=:id');
         $params = [
             'id'=>$id
         ];
