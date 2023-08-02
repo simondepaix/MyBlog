@@ -13,9 +13,9 @@ Notre DataBase mérite sa propre classe, mais ce n'est ni un controller, ni une 
     - Connexion PDO avec le try catch que l'on à déjà vu dans le constructeur
     - Une méthode static connectPDO accessible partout qui va vérifer si une instance de cette classe existe déjà ou non :
       <pre>
-        public static function connectPDO()
-    {
-        // on vérifie si une instance existe déjà, sinon on la créé
+    public static function connectPDO()
+        {
+            // on vérifie si une instance existe déjà, sinon on la créé
         if (empty(self::$_instance)) {
             self::$_instance = new Database();
         }
