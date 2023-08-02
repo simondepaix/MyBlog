@@ -33,8 +33,7 @@ class MainController{
     public function setView($view): self
     {
         $this->view = $view;
-
-        return $this;
+        
     }
 
     /**
@@ -51,7 +50,6 @@ class MainController{
     public function setId($id): self
     {
         $this->id = $id;
-
-        return $this;
+        
     }
 }
