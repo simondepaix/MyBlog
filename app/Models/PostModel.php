@@ -1,8 +1,5 @@
 <?php
 
-namespace App\Models;
-use \PDO;
-
 class PostModel{
     private $id;
     private $img;
@@ -14,7 +11,7 @@ class PostModel{
     public function getPosts($limit){
         try {
             $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');            
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }
@@ -26,7 +23,7 @@ class PostModel{
         }
 
         $query->execute();
-        $posts = $query->fetchAll(PDO::FETCH_CLASS,'App\Models\PostModel');
+        $posts = $query->fetchAll(PDO::FETCH_CLASS,'PostModel');
         return $posts;
      
     }
@@ -35,7 +32,7 @@ class PostModel{
     {
         try {
             $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }        
@@ -44,7 +41,7 @@ class PostModel{
             'id'=>$id
         ];
         $query->execute($params);
-        $query->setFetchMode(PDO::FETCH_CLASS, 'App\Models\PostModel');
+        $query->setFetchMode(PDO::FETCH_CLASS, 'PostModel');
         $post = $query->fetch();            
         return $post;
     }
