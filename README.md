@@ -12,7 +12,7 @@ Notre DataBase mérite sa propre classe, mais ce n'est ni un controller, ni une 
     - Récupérer un fichier de config comprenant nos informations de connexion BDD, vous pouvez utiliser la fonction parse_ini_file pour récupérer les data de ce fichier
     - Connexion PDO avec le try catch que l'on à déjà vu dans le constructeur
     - Une méthode static connectPDO accessible partout qui va vérifer si une instance de cette classe existe déjà ou non :
-      <pre>
+      <code>
     public static function connectPDO()
         {
             // on vérifie si une instance existe déjà, sinon on la créé
@@ -21,7 +21,7 @@ Notre DataBase mérite sa propre classe, mais ce n'est ni un controller, ni une 
         }
         return self::$_instance->dbh;
     }
-  </pre>
+  </code>
     - Il faudra ensuite créer le fichier config.ini qui contient les information de la bdd
     - N'oubliez pas de le mettre dans le gitignore car c'est une erreur de sécurité !
     - Remplacez les connexions classiques des models par notre nouvelle connexion
