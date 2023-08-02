@@ -24,8 +24,7 @@ class MainController{
     public function setView($view): self
     {
         $this->view = $view;
-
-        return $this;
+        
     }
 
 
@@ -44,7 +43,6 @@ class MainController{
     public function setData($data): self
     {
         $this->data = $data;
-
-        return $this;
+        
     }
 }
