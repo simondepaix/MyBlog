@@ -4,7 +4,8 @@ class MainController{
     protected $data;
     
     public function render(){             
-        $data = $this->data;                              
+        $data = $this->data; 
+           
         require __DIR__.'/../views/front/layouts/header.phtml';
         require __DIR__."/../views/front/partials/".$this->view.".phtml";
         require __DIR__.'/../views/front/layouts/footer.phtml';
@@ -46,3 +47,4 @@ class MainController{
         $this->data = $data;        
     }
 }
+

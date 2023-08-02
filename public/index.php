@@ -8,8 +8,8 @@ require __DIR__.'/../app/Controllers/AboutController.php';
 // Variable contenant les routes dispo
 const AVAIABLE_ROUTES = [
     'home'=>'HomeController',
-    'about'=>'AboutController',
-    'contact'=>'ContactController',
+    'about'=>'MainController',
+    'contact'=>'MainController',
     '404'=>'ErrorController'
 ];
 
@@ -35,6 +35,7 @@ if(array_key_exists($page,AVAIABLE_ROUTES)){
 $pageController = new $controller();
 $pageController->setView($page);
 $pageController->render();
+
 
 
 
