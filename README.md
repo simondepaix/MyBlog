@@ -13,6 +13,6 @@ Ces deux méthodes doivent :
 - retourner le résultat de la bonne requête SQL avec PDO
 - Astuce, utilisez PDO::FETCH_CLASS pour retourner vos articles sous la forme de votre classe
 
-Côté controller :
+Côté controller (pour l'instant dans le main):
 - Appelez la méthode getPosts($limit) et stockez sa valeur de retour dans une variable $data
 - Faite un var_dump() de cette variable pour visualiser les données
