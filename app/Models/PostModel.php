@@ -23,7 +23,7 @@ class PostModel {
         }
 
         $query->execute();
-        $posts = $query->fetchAll(PDO::FETCH_CLASS,'BlogModel');
+        $posts = $query->fetchAll(PDO::FETCH_CLASS,'PostModel');
         return $posts;
      
     }
