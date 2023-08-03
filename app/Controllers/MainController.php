@@ -6,7 +6,8 @@ class MainController{
         require __DIR__.'/../Models/PostModel.php';
         $postModel = new PostModel();        
         $this->data = $postModel->getPosts(5);   
-        $data = $this->data;                              
+        $data = $this->data;  
+        var_dump($data)
         require __DIR__.'/../views/front/layouts/header.phtml';
         require __DIR__."/../views/front/partials/$this->view.phtml";
         require __DIR__.'/../views/front/layouts/footer.phtml';
