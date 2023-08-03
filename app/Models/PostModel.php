@@ -57,11 +57,10 @@ class PostModel{
     /**
      * Set the value of id
      */
-    public function setId($id): self
+    public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
+        
     }
 
     /**
@@ -75,11 +74,10 @@ class PostModel{
     /**
      * Set the value of img
      */
-    public function setImg($img): self
+    public function setImg($img)
     {
         $this->img = $img;
-
-        return $this;
+        
     }
 
     /**
@@ -93,11 +91,10 @@ class PostModel{
     /**
      * Set the value of date
      */
-    public function setDate($date): self
+    public function setDate($date)
     {
         $this->date = $date;
-
-        return $this;
+        
     }
 
     /**
@@ -111,11 +108,10 @@ class PostModel{
     /**
      * Set the value of title
      */
-    public function setTitle($title): self
+    public function setTitle($title)
     {
         $this->title = $title;
-
-        return $this;
+        
     }
 
     /**
@@ -129,11 +125,10 @@ class PostModel{
     /**
      * Set the value of contenu
      */
-    public function setContent($content): self
+    public function setContent($content)
     {
         $this->content = $content;
-
-        return $this;
+        
     }
 
     /**
