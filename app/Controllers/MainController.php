@@ -2,7 +2,7 @@
 class MainController{
     protected $view;    
     protected $data;
-    public function render(){  
+    public function render(){          
         require __DIR__.'/../Models/PostModel.php';
         $postModel = new PostModel();        
         $this->data = $postModel->getPosts(5);   
