@@ -1,5 +1,4 @@
 <?php
-
 require __DIR__.'/../app/Controllers/MainController.php';
 require __DIR__.'/../app/Controllers/HomeController.php';
 require __DIR__.'/../app/Controllers/ContactController.php';
@@ -11,22 +10,10 @@ $base_uri = $_SERVER['REQUEST_URI'];
 
 // Variable contenant les routes dispo
 const AVAIABLE_ROUTES = [
-    'home'=>[
-        'action' => 'renderHome',
-        'controller' => 'HomeController'
-    ],
-    'about'=>[
-        'action' => 'render',
-        'controller' => 'MainController'
-    ],
-    'contact'=>[
-        'action' => 'render',
-        'controller' => 'MainController'
-    ],
-    '404'=>[
-        'action' => 'render',
-        'controller' => 'ErrorController'
-    ],
+    'home'=>'HomeController',
+    'about'=>'AboutController',
+    'contact'=>'ContactController',
+    '404'=>'ErrorController'
 ];
 
 // initiatilisation des variables
@@ -43,14 +30,11 @@ if(isset($_GET['page']) && !empty($_GET['page'])){
 // Si la page demandée fait partie de notre tableau de routes, on la stocke dans la variable controller
 // sinon on redirige vers le controller ErrorController
 if(array_key_exists($page,AVAIABLE_ROUTES)){
-    $controller = AVAIABLE_ROUTES[$page]['controller'];
-    $controllerAction = AVAIABLE_ROUTES[$page]['action'];
+    $controller = AVAIABLE_ROUTES[$page];
 }else{
     $controller = 'ErrorController';
 }
 
 $pageController = new $controller();
-$pageController->$controllerAction($page);
-
-
-
+$pageController->setView($page);
+$pageController->render();
