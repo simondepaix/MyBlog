@@ -33,6 +33,10 @@ const AVAIABLE_ROUTES = [
         'action' => 'render',
         'controller' => 'MainController'
     ],
+    'register'=>[
+        'action' => 'renderRegister',
+        'controller' => 'UserController'
+    ],
     '404'=>[
         'action' => 'render',
         'controller' => 'ErrorController'
