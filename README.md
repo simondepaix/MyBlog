@@ -4,5 +4,5 @@
 ## consignes : 
 Halleluja, c'était pas simple mais on à réussi à récupérer les données depuis notre bdd et à les afficher grâce à un var_dump().
 Maintenant, nous allons bien sûr mettre en place ces data dans la vue home.
-- Créez une boucle foreach dans la vue home et mettez en forme les <!-- Post preview--> 
+- Créez une boucle foreach dans la vue home et mettez en forme les Post preview
 
