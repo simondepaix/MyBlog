@@ -1,6 +1,6 @@
 <?php
 
-class BlogModel{
+class PostModel{
     private $id;
     private $img;
     private $date;
@@ -16,13 +16,13 @@ class BlogModel{
         }
 
         if(!empty($limit)){
-            $query = $dbh->prepare('SELECT * FROM post LIMIT '.$limit);
+            $query = $dbh->prepare('SELECT * FROM posts LIMIT '.$limit);
         }else{
-            $query = $dbh->prepare('SELECT * FROM post');        
+            $query = $dbh->prepare('SELECT * FROM posts');        
         }
 
         $query->execute();
-        $posts = $query->fetchAll(PDO::FETCH_CLASS,'BlogModel');
+        $posts = $query->fetchAll(PDO::FETCH_CLASS,'PostModel');
         return $posts;
      
     }

@@ -3,7 +3,8 @@
 class HomeController extends MainController{
 
     public function renderHome($view,$data = []){
-        $postModel = new BlogModel();
+        require __DIR__.'/../Models/PostModel.php';
+        $postModel = new PostModel();
         $posts = $postModel->getPosts(5);        
         $this->render($view,$posts);
     }
