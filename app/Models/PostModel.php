@@ -1,11 +1,12 @@
 <?php
 
-class PostModel{
+class PostModel {
     private $id;
     private $img;
     private $date;
     private $title;
     private $content;
+    private $user_id;
     
     public function getPosts($limit){
         try {
@@ -16,9 +17,9 @@ class PostModel{
         }
 
         if(!empty($limit)){
-            $query = $dbh->prepare('SELECT * FROM posts LIMIT '.$limit);
+            $query = $dbh->prepare('SELECT * FROM post LIMIT '.$limit);
         }else{
-            $query = $dbh->prepare('SELECT * FROM posts');        
+            $query = $dbh->prepare('SELECT * FROM post');        
         }
 
         $query->execute();
@@ -42,11 +43,10 @@ class PostModel{
     /**
      * Set the value of id
      */
-    public function setId($id): self
+    public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
+        
     }
 
     /**
@@ -60,11 +60,10 @@ class PostModel{
     /**
      * Set the value of img
      */
-    public function setImg($img): self
+    public function setImg($img)
     {
         $this->img = $img;
-
-        return $this;
+        
     }
 
     /**
@@ -78,11 +77,10 @@ class PostModel{
     /**
      * Set the value of date
      */
-    public function setDate($date): self
+    public function setDate($date)
     {
         $this->date = $date;
-
-        return $this;
+        
     }
 
     /**
@@ -96,15 +94,14 @@ class PostModel{
     /**
      * Set the value of title
      */
-    public function setTitle($title): self
+    public function setTitle($title)
     {
         $this->title = $title;
-
-        return $this;
+        
     }
 
     /**
-     * Get the value of content
+     * Get the value of contenu
      */
     public function getContent()
     {
@@ -112,12 +109,28 @@ class PostModel{
     }
 
     /**
-     * Set the value of content
+     * Set the value of contenu
      */
-    public function setContent($content): self
+    public function setContent($content)
     {
         $this->content = $content;
 
-        return $this;
+    }
+
+    /**
+     * Get the value of user_id
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    /**
+     * Set the value of user_id
+     */
+    public function setUserId($user_id)
+    {
+        $this->user_id = $user_id;
+        
     }
 }
