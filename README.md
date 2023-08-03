@@ -17,4 +17,6 @@ Côté controller :
 - Appelez la méthode getPosts($limit) et stockez sa valeur de retour la propriété $data
 - Faite un var_dump() de cette variable pour visualiser les données
 
+Côté router :
+- Vous allez devoir remanier les avaiables_routes pour prendre en compte un render différents
 
