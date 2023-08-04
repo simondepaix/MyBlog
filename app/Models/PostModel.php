@@ -8,24 +8,27 @@ class PostModel {
     private $content;
     private $user_id;
     
-    public function getPosts($limit){
+    public function getPosts($limit = null)
+    {
         try {
-            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');            
+            $dbh = new PDO('mysql:host=localhost;dbname=myblog', 'root', 'root');
+            echo 'connecté';
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }
 
-        if(!empty($limit)){
-            $query = $dbh->prepare('SELECT * FROM post LIMIT '.$limit);
-        }else{
-            $query = $dbh->prepare('SELECT * FROM post');        
+        if (isset($limit)) {
+            $sql = 'SELECT * FROM posts LIMIT ' . $limit;
+        } else {
+            $sql = 'SELECT * FROM posts';
         }
 
+        $query = $dbh->prepare($sql);
         $query->execute();
         $posts = $query->fetchAll(PDO::FETCH_CLASS,'PostModel');
+
         return $posts;
-     
     }
 
     public function getPostById($id){
