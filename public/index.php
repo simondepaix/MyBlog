@@ -1,7 +1,6 @@
 <?php
 require __DIR__.'/../vendor/autoload.php';
 
- use App\Controllers\HomeController;
 // use App\Controllers\MainController;
 // require __DIR__.'/../app/Models/PostModel.php';
 // require __DIR__.'/../app/Controllers/MainController.php';
@@ -30,6 +29,14 @@ const AVAIABLE_ROUTES = [
         'action' => 'renderPost',
         'controller' => 'PostController'
     ],
+    'login'=>[
+        'action' => 'render',
+        'controller' => 'MainController'
+    ],
+    'register'=>[
+        'action' => 'renderRegister',
+        'controller' => 'UserController'
+    ],
     '404'=>[
         'action' => 'render',
         'controller' => 'ErrorController'
@@ -48,7 +55,7 @@ if(isset($_GET['page']) && !empty($_GET['page'])){
     }
 
 }else{
-    $page = 'home';    
+    $page = 'home';     
 }
 
 // Si la page demandée fait partie de notre tableau de routes, on la stocke dans la variable controller
@@ -59,13 +66,9 @@ if(array_key_exists($page,AVAIABLE_ROUTES)){
 }else{
     $controller = 'ErrorController';
 }
-// function my_autoloader($controller) {
-//     include __DIR__.'/../app/Controllers/'.$controller.'.php';
-// }
 
-// spl_autoload_register('my_autoloader');
 $namespace = 'App\Controllers';
-$controllerClassName = $namespace . '\\' . $controller;
+    $controllerClassName = $namespace . '\\' . $controller;
 
 // Instanciation de la classe en utilisant le nom complet (namespace + nom de la classe)
 $pageController = new $controllerClassName();
