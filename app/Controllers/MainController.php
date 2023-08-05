@@ -12,7 +12,7 @@ class MainController{
         //  cette url va nous servir pour les liens de la barre de nav
         // faites un var_dump de $base_uri pour vraiment bien comprendre ce qui est créé !        
         $base_uri = explode('/public/',$_SERVER['REQUEST_URI']);            
-        $data = $this->data;                              
+        $data = $this->data;                                      
         require __DIR__.'/../views/front/layouts/header.phtml';
         require __DIR__."/../views/front/partials/$this->view.phtml";
         require __DIR__.'/../views/front/layouts/footer.phtml';

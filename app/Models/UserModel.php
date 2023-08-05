@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Models;
+
 use App\Utility\DataBase;
+
 class UserModel
 {
     private $id;
@@ -12,29 +14,34 @@ class UserModel
 
     public function registerUser()
     {
-        
+
         $pdo = DataBase::connectPDO();
 
-        
-        $sql = "INSERT INTO `users`(`name`, `mail`, `password`, `role`) VALUES ('[value-2]','[value-3]','[value-4]',1)";
+        $sql = "INSERT INTO `users`(`name`, `mail`, `password`) VALUES (:name,:mail,:password)";
 
         $pdoStatement = $pdo->prepare($sql);
         $params = [
+            ':name' => $this->name,
             ':mail' => $this->email,
             ':password' => $this->password,
-            ':name' => $this->name,            
-            ':role' => $this->role,            
         ];
-
-        $success = $pdoStatement->execute();
-
-        // mettre à jour l'id du model
-        if ($success) {
-            echo '<div class="alert alert-success" role="alert">Enregistrement réussi</div>';
-        }
-
-        // ne pas oublier de retourner le succes de l'opération
+        $success = $pdoStatement->execute($params);
+ 
         return $success;
+    }
+
+    public function checkEmail()
+    {        
+        $pdo = DataBase::connectPDO();
+
+        $sql = "SELECT COUNT(*) FROM `users` WHERE `mail` = :mail";
+        $query = $pdo->prepare($sql);
+        
+        $query->bindParam(':mail', $this->email);
+        $query->execute();
+        $isMail = $query->fetchColumn();     
+           
+        return $isMail > 0;
     }
 
     /**
