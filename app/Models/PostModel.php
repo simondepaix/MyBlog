@@ -1,42 +1,61 @@
 <?php
 
 namespace App\Models;
+
 use App\Utility\DataBase;
 use \PDO;
 
-class PostModel{
+class PostModel
+{
     private $id;
     private $img;
     private $date;
     private $title;
     private $content;
     private $user_id;
-    
-    public function getPosts($limit){
+
+    public function getPosts($limit = null)
+    {
         $dsn = DataBase::connectPDO();
-        if(!empty($limit)){
-            $query = $dsn->prepare('SELECT * FROM posts LIMIT '.$limit);
-        }else{
-            $query = $dsn->prepare('SELECT * FROM posts');        
+        if (!empty($limit)) {
+            $query = $dsn->prepare('SELECT * FROM posts LIMIT ' . $limit);
+        } else {
+            $query = $dsn->prepare('SELECT * FROM posts');
         }
 
         $query->execute();
-        $posts = $query->fetchAll(PDO::FETCH_CLASS,'App\Models\PostModel');
+        $posts = $query->fetchAll(PDO::FETCH_CLASS, 'App\Models\PostModel');
         return $posts;
-     
     }
 
     public function getPostById($id)
     {
-        $dsn = DataBase::connectPDO();      
+        $dsn = DataBase::connectPDO();
         $query = $dsn->prepare('SELECT * FROM posts WHERE id=:id');
         $params = [
-            'id'=>$id
+            'id' => $id
         ];
         $query->execute($params);
         $query->setFetchMode(PDO::FETCH_CLASS, 'App\Models\PostModel');
-        $post = $query->fetch();            
+        $post = $query->fetch();
         return $post;
+    }
+
+    public function insertPost()
+    {
+        $pdo = DataBase::connectPDO();
+        $user_id = $_SESSION['userObject']->getId();
+        $sql = "INSERT INTO `posts`(`title`, `date`, `content`, `img`, `user_id`) VALUES (:title, :date, :content, :img, :user_id)";        
+        $params = [
+            'title' => $this->title,
+            'date' => $this->date,
+            'content' => $this->content,
+            'img' => $this->img,
+            'user_id' => $user_id
+        ];
+        $query = $pdo->prepare($sql);
+        $queryStatus = $query->execute($params);
+        return $queryStatus;
     }
 
     /**
