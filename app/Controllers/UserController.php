@@ -4,70 +4,100 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 
-class UserController extends MainController{
-    
-    public function renderRegister(){        
-        if(!empty($_POST)){
-            $this->register();
-        }        
-        
-        $this->render();
-        
-    }
-    
-    public function register(){
-        // filter input permet de faire le if isset sans faire pleins de conditions
-        $email = filter_input(INPUT_POST, 'email');
-        $password = filter_input(INPUT_POST, 'password');        
-        $name = filter_input(INPUT_POST, 'name');   
-        
-        // Si un champs vaut false, on ajoute une erreur dans le tableau errors
-        if (!$email || !$password || !$name)  {
-            $errors[] = '<div class="alert alert-danger" role="alert">Tous les champs sont obligatoires</div>';
+class UserController extends MainController
+{
+
+    public function renderUser()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            if (isset($_POST["registerForm"])) {
+                $this->register();
+            } elseif (isset($_POST["loginForm"])) {
+                $this->login();
+            }
         }
-        // filter_var permet de vérifier si la valeur correspond bien au pattern attendu par se champs
-        $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);        
-        if ($email === false) {            
-            $errors[] = '<div class="alert alert-danger" role="alert">Le format de l\'email n\'est pas valide.</div>';
+
+
+        $this->render();
+    }
+
+    public function register()
+    {
+
+        $errors = 0;
+        $email = filter_input(INPUT_POST, 'email');
+        $password = filter_input(INPUT_POST, 'password');
+        $name = filter_input(INPUT_POST, 'name');
+            
+
+        if (!$email || !$password || !$name) {
+            $errors = 1;
+            $this->data[] = '<div class="alert alert-danger" role="alert">Tous les champs sont obligatoires</div>';
+        }
+
+        $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);    
+        if ($email === false) {
+            $this->data[] = '<div class="alert alert-danger" role="alert">Le format de l\'email n\'est pas valide.</div>';
+            $errors = 1;
         }
 
         if (strlen($password) < 8) {
-            $errors[] = '<div class="alert alert-danger" role="alert">Le mot de passe doit contenir au moins 8 caractères.</div>';
+            $this->data[] = '<div class="alert alert-danger" role="alert">Le mot de passe doit contenir au moins 8 caractères.</div>';
+            $errors = 1;
         }
-        if(!empty($errors)){   
-            $this->data['errors'] = $errors;       
-        }else{            
-            // Création du mot de passe hashé
+
+        if ($errors < 1) {
+
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            // Création de l'objet user
-            $user = new UserModel();            
-            // Remplissage des propriétés via les setters
+
+            $user = new UserModel();
             $user->setEmail($email);
             $user->setPassword($hashedPassword);
-            $user->setName($name); 
-            //De base on créé un user avec le rôle 3 (1:admin,2:author,3:user)    
-            $user->setRole(3);    
-            if($user->checkEmail()){
-                $errors[] = '<div class="alert alert-danger" role="alert">Cet email est déjà pris, veuillez en choisir un autre.</div>';
-                $this->data['errors'] =  $errors;
+            $user->setName($name);
+            $user->setRole(3);
+
+            if ($user->checkEmail()) {
+                $this->data[] = '<div class="alert alert-danger" role="alert">Cet email est déjà pris, veuillez en choisir un autre.</div>';
+                $errors = 1;
+            }            
+
+            if ($errors < 1) {
+                if ($user->registerUser()) {
+                    $this->data[] =  '<div class="alert alert-success" role="alert">Enregistrement réussi, vous pouvez maintenant vous connecter</div>';
+                } else {
+                    $this->data[] = '<div class="alert alert-danger" role="alert">Il y a eu une erreur lors de l\enregistrement</div>';
+                }
             }
-            $this->data['user'] = $user;  
-            if(!isset($errors)){
-                if($user->registerUser()){                   
-                    $this->data['success'] =  '<div class="alert alert-success" role="alert">Enregistrement réussi</div>';                
-                }else{
-                    $this->data['errors'] = '<div class="alert alert-danger" role="alert">Il y a eu une erreur lors de l\enregistrement</div>';
-                } 
-            }
-            
-            // on redirige l'utilisateur sur la page moncompte                
-            // header('Location:'.$_SERVER['REQUEST_URI'].'/../');                        
         }
-
-    
-        
-
     }
 
 
+    public function login()
+    {
+
+        $errors = 0;
+        $user = new UserModel();
+        $user = $user->getUserByEmail($_POST['email']);
+
+
+        if ($user === false) {
+            $errors = 1;
+        }
+
+        if (password_verify($_POST['password'], $user->getPassword())) {
+
+            $_SESSION['userObject'] = $user;
+
+            $this->data[] =  '<div class="alert alert-success" role="alert">connexion réussie !</div>';
+
+            $base_uri = explode('index.php', $_SERVER['SCRIPT_NAME']);
+            header('Location:' . $base_uri[0]);
+
+        } else {
+            $errors = 1;
+        }
+        if ($errors > 0) {
+            $this->data[] = '<div class="alert alert-danger" role="alert">Email ou mot de passe incorrect</div>';
+        }
+    }
 }

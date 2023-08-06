@@ -1,6 +1,6 @@
 <?php
 require __DIR__.'/../vendor/autoload.php';
-
+session_start();
 // use App\Controllers\MainController;
 // require __DIR__.'/../app/Models/PostModel.php';
 // require __DIR__.'/../app/Controllers/MainController.php';
@@ -30,12 +30,16 @@ const AVAIABLE_ROUTES = [
         'controller' => 'PostController'
     ],
     'login'=>[
-        'action' => 'render',
-        'controller' => 'MainController'
+        'action' => 'renderUser',
+        'controller' => 'UserController'
     ],
     'register'=>[
-        'action' => 'renderRegister',
+        'action' => 'renderUser',
         'controller' => 'UserController'
+    ],
+    'admin'=>[
+        'action' => 'render',
+        'controller' => 'mainController'
     ],
     '404'=>[
         'action' => 'render',
