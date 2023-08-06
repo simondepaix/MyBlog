@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 class MainController{
     protected $view;
-    protected $id;
+    protected $subPage;
     protected $data;
     protected $viewType = 'front';
     
@@ -44,17 +44,17 @@ class MainController{
     /**
      * Get the value of id
      */
-    public function getId()
+    public function getSubPage()
     {
-        return $this->id;
+        return $this->subPage;
     }
 
     /**
      * Set the value of id
      */
-    public function setId($id): self
+    public function setSubPage($value): self
     {
-        $this->id = $id;
+        $this->subPage = $value;
 
         return $this;
     }
