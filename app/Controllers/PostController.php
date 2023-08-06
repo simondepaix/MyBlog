@@ -11,4 +11,6 @@ class PostController extends MainController{
         $this->data =  $postModel->getPostById($this->subPage);        
         $this->render();
     }
+
+    
 }
