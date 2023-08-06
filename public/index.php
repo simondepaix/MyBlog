@@ -38,8 +38,8 @@ const AVAIABLE_ROUTES = [
         'controller' => 'UserController'
     ],
     'admin'=>[
-        'action' => 'render',
-        'controller' => 'mainController'
+        'action' => 'renderAdmin',
+        'controller' => 'AdminController'
     ],
     '404'=>[
         'action' => 'render',
