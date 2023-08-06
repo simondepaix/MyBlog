@@ -50,14 +50,13 @@ const AVAIABLE_ROUTES = [
 // initiatilisation des variables
 $page = 'home';
 $controller;
-$itemId=null;
+$subPage=null;
 // s'il y a un param GET page, on le stock dans la var page sinon on redirige vers home
 if(isset($_GET['page']) && !empty($_GET['page'])){    
     $page = $_GET['page'];
-    if(!empty($_GET['id'])){
-        $itemId = $_GET['id'];
+    if(!empty($_GET['subpage'])){
+        $subPage = $_GET['subpage'];
     }
-
 }else{
     $page = 'home';     
 }
@@ -77,7 +76,7 @@ $namespace = 'App\Controllers';
 // Instanciation de la classe en utilisant le nom complet (namespace + nom de la classe)
 $pageController = new $controllerClassName();
 $pageController->setView($page);
-$pageController->setId($itemId);
+$pageController->setSubPage($subPage);
 $pageController->$controllerAction();
 
 
