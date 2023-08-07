@@ -58,6 +58,15 @@ class PostModel
         return $queryStatus;
     }
 
+    public static function deletePost($postId){
+        $pdo = DataBase::connectPDO();
+        $sql = 'DELETE FROM `posts` WHERE id = :id';
+        $query = $pdo->prepare($sql);
+        $query->bindParam('id', $postId, PDO::PARAM_INT);
+        $queryStatus = $query->execute();
+        return $queryStatus;
+    }
+
     /**
      * Get the value of id
      */
