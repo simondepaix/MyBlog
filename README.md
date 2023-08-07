@@ -10,6 +10,13 @@ Notre DataBase mérite sa propre classe, mais ce n'est ni un controller, ni une 
 - Ce fichier aura 2 propriétés : $dsn et $instance
 - Ce fichier sera une classe qui va s'occuper de :
     - Récupérer un fichier de config comprenant nos informations de connexion BDD, vous pouvez utiliser la fonction parse_ini_file pour récupérer les data de ce fichier
+    - voici le contenu du fichier config.ini :
+    <code>
+        DB_HOST=localhost
+        DB_NAME=myblog
+        DB_USERNAME=root
+        DB_PASSWORD=root
+    </code>
     - Connexion PDO avec le try catch que l'on à déjà vu dans le constructeur
     - Une méthode static connectPDO accessible partout qui va vérifer si une instance de cette classe existe déjà ou non : 
         public static function connectPDO()
