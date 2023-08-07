@@ -29,7 +29,7 @@ class PostModel
     }
 
     public function getPostById($id)
-    {
+    {        
         $dsn = DataBase::connectPDO();
         $query = $dsn->prepare('SELECT * FROM posts WHERE id=:id');
         $params = [

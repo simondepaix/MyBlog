@@ -247,6 +247,12 @@
                                                             <input class="btn btn-primary" name="deletePostForm" type="submit" value="Delete">
                                                         </form>
                                                     </td>
+                                                    <td>
+                                                        <form class="d-flex justify-content-center align-items-center" action="" method="post">
+                                                            <input type="hidden" name="postid" value="<?= $post->getId(); ?>">
+                                                            <input class="btn btn-primary" name="updatePostForm" type="submit" value="update">
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach ?>
 

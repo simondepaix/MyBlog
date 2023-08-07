@@ -16,11 +16,25 @@ class AdminController extends MainController
             if (isset($_POST['deletePostForm'])) {
                 $this->removePost();
             }
+            if (isset($_POST['updatePostForm'])) {
+                $this->updatePost();
+            }
+            
         }
         
         $this->viewType = 'admin';
         if (isset($this->subPage)) {
             $this->view = $this->subPage;
+            if($_GET['id']){
+                $postModel = new PostModel();
+                $post = $postModel->getPostById($_GET['id']);
+                if(!$post){
+                    $this->data['error'] = '<div class="alert alert-danger" role="alert">L\'article n\'existe pas</div>';
+                }else{
+                    $this->data['post'] = $post;
+                }
+                                 
+            }
         } else {
             $postModel = new PostModel();
             $this->data['posts'] = $postModel->getPosts();
@@ -63,5 +77,9 @@ class AdminController extends MainController
         } else {
             $this->data['infos'] = '<div class="alert alert-danger" role="alert">Il s\'est produit une erreur</div>';
         }
+    }
+
+    public function updatePost(){
+        echo 'update';
     }
 }
