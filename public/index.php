@@ -1,7 +1,6 @@
 <?php
 require __DIR__.'/../vendor/autoload.php';
 
- use App\Controllers\HomeController;
 // use App\Controllers\MainController;
 // require __DIR__.'/../app/Models/PostModel.php';
 // require __DIR__.'/../app/Controllers/MainController.php';
