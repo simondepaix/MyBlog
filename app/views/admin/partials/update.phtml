@@ -197,7 +197,7 @@
         </div>
         <div class="d-inline-block">
             <?php
-            if (isset($data['error'])) {
+            if (isset($data['infos'])) {                
                 foreach ($data as $key => $message) {
                     echo $message;
                 }
@@ -210,6 +210,7 @@
                 <div class="col-10 card shadow mb-4 p-0">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <input type="hidden" name="postid" value="<?= $data['post']->getId();?>">
                         <input type="text" name="title" class="p-2 col-6" placeholder="Titre de l'article" value="<?= $data['post']->getTitle();?>">
                         <div class="dropdown no-arrow">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

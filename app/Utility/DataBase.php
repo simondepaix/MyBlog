@@ -10,8 +10,7 @@ class DataBase
     private function __construct()
     {        
      
-        $configData = parse_ini_file(__DIR__ . '/../config.ini');
-
+        $configData = parse_ini_file(__DIR__ . '/../config.ini');        
         try {
             $this->dsn = new PDO(
                 "mysql:host={$configData['DB_HOST']};dbname={$configData['DB_NAME']};charset=utf8",

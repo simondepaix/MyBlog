@@ -29,7 +29,7 @@ class PostModel
     }
 
     public function getPostById($id)
-    {        
+    {
         $dsn = DataBase::connectPDO();
         $query = $dsn->prepare('SELECT * FROM posts WHERE id=:id');
         $params = [
@@ -40,25 +40,51 @@ class PostModel
         $post = $query->fetch();
         return $post;
     }
-
-    public function insertPost()
+    
+    private function executeQuery($sql, $params)
     {
         $pdo = DataBase::connectPDO();
         $user_id = $_SESSION['userObject']->getId();
-        $sql = "INSERT INTO `posts`(`title`, `date`, `content`, `img`, `user_id`) VALUES (:title, :date, :content, :img, :user_id)";        
-        $params = [
-            'title' => $this->title,
-            'date' => $this->date,
-            'content' => $this->content,
-            'img' => $this->img,
-            'user_id' => $user_id
-        ];
+        
+        $params['user_id'] = $user_id;        
         $query = $pdo->prepare($sql);
         $queryStatus = $query->execute($params);
         return $queryStatus;
     }
 
-    public static function deletePost($postId){
+    public function insertPost()
+    {
+        $sql = "INSERT INTO `posts`(`title`, `date`, `content`, `img`, `user_id`) VALUES (:title, :date, :content, :img, :user_id)";
+        $params = [
+            'title' => $this->title,
+            'date' => $this->date,
+            'content' => $this->content,
+            'img' => $this->img
+        ];
+
+        return $this->executeQuery($sql, $params);
+    }
+
+    public function updatePost()
+    {
+        $sql = "UPDATE `posts` SET `title` = :title, `date` = :date, `content` = :content, `img` = :img, `user_id` = :user_id WHERE `id` = :id";
+        $params = [
+            'id' => $this->id,
+            'title' => $this->title,
+            'date' => $this->date,
+            'content' => $this->content,
+            'img' => $this->img
+        ];
+
+        return $this->executeQuery($sql, $params);
+    }
+
+
+
+
+
+    public static function deletePost($postId)
+    {
         $pdo = DataBase::connectPDO();
         $sql = 'DELETE FROM `posts` WHERE id = :id';
         $query = $pdo->prepare($sql);

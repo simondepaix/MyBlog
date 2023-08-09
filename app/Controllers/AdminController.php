@@ -59,13 +59,44 @@ class AdminController extends MainController
         $postModel->setContent($content);
         $postModel->setImg($thumbnail);
         $postModel->setDate($date);
+    
 
         if ($postModel->insertPost()) {
             $this->data[] = '<div class="alert alert-success" role="alert">Article enregistré avec succès</div>';
         } else {
             $this->data[] = '<div class="alert alert-danger" role="alert">Il s\'est produit une erreur</div>';
         }
+        
     }
+
+
+    public function updatePost()
+    {
+        $errors = 0;
+        
+        $id = filter_input(INPUT_POST, 'postid', FILTER_SANITIZE_NUMBER_INT	);
+        $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
+        $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
+        $categories = filter_input(INPUT_POST, 'categories', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+        $thumbnail = filter_input(INPUT_POST, 'thumbnail', FILTER_SANITIZE_URL);
+        $date = date('Y-m-d');
+
+        $postModel = new PostModel();
+        $postModel->setId($id);
+        $postModel->setTitle($title);
+        $postModel->setContent($content);
+        $postModel->setImg($thumbnail);
+        $postModel->setDate($date);
+    
+
+        if ($postModel->updatePost()) {
+            $this->data['infos'] = '<div class="alert alert-success" role="alert">Article enregistré avec succès</div>';
+        } else {
+            $this->data['infos'] = '<div class="alert alert-danger" role="alert">Il s\'est produit une erreur</div>';
+        }
+        
+    }
+
 
     public function removePost()
     {
@@ -79,7 +110,4 @@ class AdminController extends MainController
         }
     }
 
-    public function updatePost(){
-        echo 'update';
-    }
 }
