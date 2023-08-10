@@ -55,7 +55,7 @@ $subPage=null;
 if(isset($_GET['page']) && !empty($_GET['page'])){    
     $page = $_GET['page'];
     if(!empty($_GET['subpage'])){
-        $subPage = $_GET['subpage'];
+        $subPage = $_GET['subpage'];        
     }
 }else{
     $page = 'home';     

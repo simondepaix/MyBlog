@@ -10,9 +10,14 @@ RewriteRule ^([^/]+)/?$ index.php?page=$1 [QSA,L]
 # Réécrire l'URL pour les pages de posts
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^post/(\d+)/?$ index.php?page=post&id=$1 [QSA,L]
+RewriteRule ^post/(\d+)/?$ index.php?page=post&subpage=$1 [QSA,L]
 
 # Réécrire l'URL pour les pages d'administration
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^admin/([^/]+)/?$ index.php?page=admin&subpage=$1 [QSA,L]
+
+# Réécrire l'URL pour la mise à jour dans l'administration
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME !-d
+RewriteRule ^admin/update/(\d+)/?$ index.php?page=admin&subpage=update&id=$1 [QSA,L]

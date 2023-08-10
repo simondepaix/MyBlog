@@ -194,16 +194,24 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Ajouter un article</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
         </div>
-
-        <div class="row">
-            <!-- Area Chart -->
-            <div class="col-12">
-                <div class="card shadow mb-4">
+        <div class="d-inline-block">
+            <?php
+            if (isset($data['infos'])) {                
+                foreach ($data as $key => $message) {
+                    echo $message;
+                }
+            }
+            ?>
+        </div>        
+        <!-- Area Chart -->
+        <?php if (!isset($data['error'])) : ?>
+            <form class="row" action="" method="post">
+                <div class="col-10 card shadow mb-4 p-0">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <input type="text" class="p-2 col-6" placeholder="Titre de l'article">
+                        <input type="hidden" name="postid" value="<?= $data['post']->getId();?>">
+                        <input type="text" name="title" class="p-2 col-6" placeholder="Titre de l'article" value="<?= $data['post']->getTitle();?>">
                         <div class="dropdown no-arrow">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -218,26 +226,30 @@
                         </div>
                     </div>
                     <!-- Card Body -->
-                    <div class="card-body">
-                        <input type="text" placeholder="url de de l'image de la vignette" class="col-6 p-2 mb-4">
-                        <textarea name="" id="" rows="30" class="w-100 p-2" placeholder="Contenu de l'article (html accepté)"></textarea>
+                    <div class="card-body">    
+                        
+                        <input type="text" name="thumbnail" placeholder="nom de de l'image de la vignette (ex: nom.jpg)" class="col-6 p-2 mb-4" value="<?= $data['post']->getImg();?>">
+                        <textarea name="content" id="" rows="30" class="w-100 p-2" placeholder="Contenu de l'article (html accepté)"><?= $data['post']->getContent();?></textarea>
                         <p>Catégories</p>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" name="categories[]" value="1" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Default checkbox
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <input class="form-check-input" type="checkbox" name="categories[]" value="2" id="flexCheckChecked" checked>
                             <label class="form-check-label" for="flexCheckChecked">
                                 Checked checkbox
                             </label>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                <div class="col-2 ">
+                    <input type="submit" class="btn btn-sm btn-primary shadow-sm position-fixed" name="updatePostForm" value="Mettre à jour">
+                </div>
+            </form>
+        <?php endif; ?>
 
     </div>
     <!-- /.container-fluid -->
