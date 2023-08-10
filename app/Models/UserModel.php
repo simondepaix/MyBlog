@@ -17,13 +17,14 @@ class UserModel
 
         $pdo = DataBase::connectPDO();
 
-        $sql = "INSERT INTO `users`(`name`, `email`, `password`) VALUES (:name,:email,:password)";
+        $sql = "INSERT INTO `users`(`name`, `email`, `password`,`role`) VALUES (:name,:email,:password,:role)";
 
         $pdoStatement = $pdo->prepare($sql);
         $params = [
             ':name' => $this->name,
             ':email' => $this->email,
             ':password' => $this->password,
+            ':role' => $this->role,
         ];
         $success = $pdoStatement->execute($params);
  
