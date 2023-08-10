@@ -17,8 +17,7 @@ class AdminController extends MainController
             if (isset($_POST["addPostForm"])) {
                 $this->addPost();
             }
-        }
-
+        }        
         $this->render();
     }
 
