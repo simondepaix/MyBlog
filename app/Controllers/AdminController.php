@@ -9,6 +9,7 @@ class AdminController extends MainController
 {
     public function renderAdmin()
     {
+        $this->checkUserAuthorization(1);    
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (isset($_POST["addPostForm"])) {
                 $this->addPost();

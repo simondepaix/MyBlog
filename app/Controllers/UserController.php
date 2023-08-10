@@ -7,8 +7,8 @@ use App\Models\UserModel;
 class UserController extends MainController
 {
 
-    public function renderUser()
-    {
+    public function renderUser()    
+    {        
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (isset($_POST["registerForm"])) {
                 $this->register();
