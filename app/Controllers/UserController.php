@@ -17,9 +17,10 @@ class UserController extends MainController{
     
     public function register(){
         // filter input permet de faire le if isset sans faire pleins de conditions
-        $email = filter_input(INPUT_POST, 'email');
-        $password = filter_input(INPUT_POST, 'password');        
-        $name = filter_input(INPUT_POST, 'name');   
+        
+        $email = filter_input(INPUT_POST, 'email',FILTER_SANITIZE_EMAIL);
+        $password = filter_input(INPUT_POST, 'password',FILTER_SANITIZE_SPECIAL_CHARS);        
+        $name = filter_input(INPUT_POST, 'name',FILTER_SANITIZE_SPECIAL_CHARS);   
         
         // Si un champs vaut false, on ajoute une erreur dans le tableau errors
         if (!$email || !$password || !$name)  {

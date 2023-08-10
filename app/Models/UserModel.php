@@ -17,12 +17,12 @@ class UserModel
 
         $pdo = DataBase::connectPDO();
 
-        $sql = "INSERT INTO `users`(`name`, `mail`, `password`) VALUES (:name,:mail,:password)";
+        $sql = "INSERT INTO `users`(`name`, `email`, `password`) VALUES (:name,:email,:password)";
 
         $pdoStatement = $pdo->prepare($sql);
         $params = [
             ':name' => $this->name,
-            ':mail' => $this->email,
+            ':email' => $this->email,
             ':password' => $this->password,
         ];
         $success = $pdoStatement->execute($params);
@@ -34,10 +34,10 @@ class UserModel
     {        
         $pdo = DataBase::connectPDO();
 
-        $sql = "SELECT COUNT(*) FROM `users` WHERE `mail` = :mail";
+        $sql = "SELECT COUNT(*) FROM `users` WHERE `email` = :email";
         $query = $pdo->prepare($sql);
         
-        $query->bindParam(':mail', $this->email);
+        $query->bindParam(':email', $this->email);
         $query->execute();
         $isMail = $query->fetchColumn();     
            
