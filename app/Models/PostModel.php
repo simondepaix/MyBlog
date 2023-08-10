@@ -20,8 +20,8 @@ class PostModel{
             $query = $dsn->prepare('SELECT * FROM posts');        
         }
 
-        $query->execute();
-        $posts = $query->fetchAll(PDO::FETCH_CLASS,'App\Models\PostModel');
+        $query->execute();        
+        $posts = $query->fetchAll(PDO::FETCH_CLASS,'App\Models\PostModel');        
         return $posts;
      
     }

@@ -55,11 +55,11 @@ class UserModel
         SELECT * 
         FROM users
         WHERE email = :email';        
-        $pdoStatement = $pdo->prepare($sql);
+        $query = $pdo->prepare($sql);
         // on exécute la requête en donnant à PDO la valeur à utiliser pour remplacer ':email'
-        $pdoStatement->execute([':email' => $email]);
+        $query->execute([':email' => $email]);
         // on récupère le résultat sous la forme d'un objet de la classe AppUser
-        $result = $pdoStatement->fetchObject('App\Models\UserModel');
+        $result = $query->fetchObject('App\Models\UserModel');
 
         // on renvoie le résultat
         return $result;

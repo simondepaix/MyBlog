@@ -78,7 +78,7 @@ class UserController extends MainController
         $errors = 0;
         $user = new UserModel();
         $user = $user->getUserByEmail($_POST['email']);
-
+        var_dump($user);
 
         if ($user === false) {
             $errors = 1;
