@@ -24,27 +24,22 @@ class MainController{
     protected function checkUserAuthorization($role) {                
         
         if (isset($_SESSION['userObject'])) {            
-            $currentUser = $_SESSION['userObject'];              
+            $currentUser = $_SESSION['userObject'];             
             $currentUserRole = $currentUser->getRole();            
             if ($currentUserRole <= $role) {                
                 return true;
-            }
-            // Sinon le user connecté n'a pas la permission d'accéder à la page
+            }            
             else {
-                // => on envoie le header "403 Forbidden"
-                http_response_code(403);
-                // Puis on affiche la page d'erreur 403
-                $this->view = '404';
-                $this->render();
-                // Enfin on arrête le script pour que la page demandée ne s'affiche pas
+             
+                http_response_code(403);           
+                $this->view = '403';
+                $this->render();                
                 exit();
             }
-        }
-        // Sinon, l'internaute n'est pas connecté à un compte
-        else {
-            // Alors on le redirige vers la page de connexion
+        }        
+        else {            
             $redirect =  explode('/public/',$_SERVER['REQUEST_URI']);        
-            header('Location: ' . $redirect[0].'login');
+            header('Location: ' . $redirect[0].'/public/login');
             exit();
         }
     }

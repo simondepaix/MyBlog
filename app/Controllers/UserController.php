@@ -8,15 +8,18 @@ class UserController extends MainController
 {
 
     public function renderUser()    
-    {        
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            if (isset($_POST["registerForm"])) {
-                $this->register();
-            } elseif (isset($_POST["loginForm"])) {
-                $this->login();
+    {   
+        if($this->view === 'logout'){
+            $this->logout();
+        }else{
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                if (isset($_POST["registerForm"])) {
+                    $this->register();
+                } elseif (isset($_POST["loginForm"])) {
+                    $this->login();
+                }
             }
         }
-
 
         $this->render();
     }
@@ -91,7 +94,7 @@ class UserController extends MainController
             $this->data[] =  '<div class="alert alert-success" role="alert">connexion réussie !</div>';
 
             $base_uri = explode('index.php', $_SERVER['SCRIPT_NAME']);
-            header('Location:' . $base_uri[0]);
+            header('Location:' . $base_uri[0].'admin');
 
         } else {
             $errors = 1;
@@ -99,5 +102,14 @@ class UserController extends MainController
         if ($errors > 0) {
             $this->data[] = '<div class="alert alert-danger" role="alert">Email ou mot de passe incorrect</div>';
         }
+    }
+
+    public function logout()
+    {            
+        unset($_SESSION['userObject']);
+          
+        $base_uri = explode('index.php', $_SERVER['SCRIPT_NAME']);
+        header('Location:' . $base_uri[0].'home');        
+        
     }
 }
