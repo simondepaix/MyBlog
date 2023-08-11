@@ -75,7 +75,7 @@ class PostModel
             'content' => $this->content,
             'img' => $this->img
         ];
-
+        
         return $this->executeQuery($sql, $params);
     }
 
