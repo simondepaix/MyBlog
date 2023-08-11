@@ -24,18 +24,22 @@ class AdminController extends MainController
         }
         
         $this->viewType = 'admin';
-        if (isset($this->subPage)) {
+        if (isset($this->subPage)) {            
             $this->view = $this->subPage;
-            if($_GET['id']){
-                $postModel = new PostModel();
-                $post = $postModel->getPostById($_GET['id']);
-                if(!$post){
-                    $this->data['error'] = '<div class="alert alert-danger" role="alert">L\'article n\'existe pas</div>';
-                }else{
-                    $this->data['post'] = $post;
+            if($this->view === 'update'){
+                if(isset($_GET['id'])){
+                    $postModel = new PostModel();
+                    $post = $postModel->getPostById($_GET['id']);
+                    if(!$post){
+                        $this->data['error'] = '<div class="alert alert-danger" role="alert">L\'article n\'existe pas</div>';
+                    }else{
+                        $this->data['post'] = $post;
+                    }
+                                     
                 }
-                                 
+            }else if($this->view === 'update'){
             }
+
         } else {
             $postModel = new PostModel();
             $this->data['posts'] = $postModel->getPosts();
