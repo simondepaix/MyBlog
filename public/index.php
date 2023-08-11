@@ -33,6 +33,10 @@ const AVAIABLE_ROUTES = [
         'action' => 'renderUser',
         'controller' => 'UserController'
     ],
+    'logout'=>[
+        'action' => 'renderUser',
+        'controller' => 'UserController'
+    ],
     'register'=>[
         'action' => 'renderUser',
         'controller' => 'UserController'

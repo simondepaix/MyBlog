@@ -6,7 +6,7 @@ use App\Models\PostModel;
 
 class PostController extends MainController{
 
-    public function renderPost(){
+    public function renderPost(){        
         $postModel = new PostModel();                  
         $this->data =  $postModel->getPostById($this->subPage);        
         $this->render();
