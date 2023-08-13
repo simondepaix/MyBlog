@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\MainController;
 use App\Models\PostModel;
+use App\Models\UserModel;
 
 class AdminController extends MainController
 {
@@ -26,7 +27,7 @@ class AdminController extends MainController
         $this->viewType = 'admin';
         if (isset($this->subPage)) {
             $this->view = $this->subPage;
-            if($_GET['id']){
+            if(isset($_GET['id'])){
                 $postModel = new PostModel();
                 $post = $postModel->getPostById($_GET['id']);
                 if(!$post){
@@ -41,6 +42,10 @@ class AdminController extends MainController
             $this->data['posts'] = $postModel->getPosts();
         }
 
+        if($this->view === 'users'){
+            $users = new UserModel();
+            $this->data['users'] = $users->getUsers();
+        }
 
         $this->render();
     }

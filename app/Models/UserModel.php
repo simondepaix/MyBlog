@@ -64,6 +64,20 @@ class UserModel
         return $result;
     }
 
+    public function getUsers(){
+
+        $pdo = DataBase::connectPDO();
+
+        $sql = 'SELECT * FROM users';
+
+        $query = $pdo->prepare($sql);
+        $query->execute();
+
+        $users = $query->fetchAll(\PDO::FETCH_CLASS, 'App\Models\UserModel');
+        
+        return $users;
+    }
+
 
     /**
      * Get the value of id
