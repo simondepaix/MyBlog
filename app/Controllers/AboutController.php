@@ -1,7 +1,7 @@
-<?php 
+<?php
 
+namespace App\Controllers;
 
-
-class AboutController extends MainController{
-
+class AboutController extends MainController
+{
 }

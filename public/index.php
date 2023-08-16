@@ -71,6 +71,7 @@ if(array_key_exists($page,AVAIABLE_ROUTES)){
     $controller = AVAIABLE_ROUTES[$page]['controller'];
     $controllerAction = AVAIABLE_ROUTES[$page]['action'];
 }else{
+    // si la route ne correspond pas, on appelle ErrorController
     $controller = 'ErrorController';
 }
 
@@ -79,8 +80,14 @@ $namespace = 'App\Controllers';
 
 // Instanciation de la classe en utilisant le nom complet (namespace + nom de la classe)
 $pageController = new $controllerClassName();
+
+// On alimente la propriété view du controller avec le nom de la page demandée.
 $pageController->setView($page);
+
+// // On alimente la propriété subPage du controller avec le nom de la sous-page demandée. S'il n'y en à pas, elle vaudra simplement null
 $pageController->setSubPage($subPage);
+
+// On appelle la méthode du controller demandée
 $pageController->$controllerAction();
 
 
