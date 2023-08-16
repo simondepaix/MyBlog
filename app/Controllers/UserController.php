@@ -122,12 +122,14 @@ class UserController extends MainController
                 // si c'est le cas, on stocke notre objet user dans la session
                 $_SESSION['userObject'] = $user;
                 // on stocke un message dans la propriété data pour l'afficher dans la vue
-                $this->data[] =  '<div class="alert alert-success" role="alert">connexion réussie !</div>';
+                $this->data[] =  '<div class="alert alert-success" role="alert">connexion réussie ! votre compte doit être modifié par un admin pour que vous ayez accès à l\'administration</div>';
 
                 // on créé une url de redirection
                 $base_uri = explode('index.php', $_SERVER['SCRIPT_NAME']);
                 // on redirige vers la page admin
-                header('Location:' . $base_uri[0] . 'admin');
+                if($user->getRole() < 3){
+                    header('Location:' . $base_uri[0] . 'admin');
+                }                
             } else {
                 // sinon si les mots de passe ne concordent pas, il y'a une erreur
                 $errors = 1;

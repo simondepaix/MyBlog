@@ -25,7 +25,7 @@ class UserModel
         $pdo = DataBase::connectPDO();
 
         // création requête avec liaison de param pour éviter les injections sq
-        $sql = "INSERT INTO `users`(`name`, `email`, `password`) VALUES (:name,:email,:password,:role)";
+        $sql = "INSERT INTO `users`(`name`, `email`, `password`,`role`) VALUES (:name,:email,:password,:role)";
         // préparation de la requête
         $pdoStatement = $pdo->prepare($sql);
         // liaison des params avec leur valeurs. tableau à passer dans execute
