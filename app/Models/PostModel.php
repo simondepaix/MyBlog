@@ -19,7 +19,7 @@ class PostModel
     private $user_id;
 
     // méthode pour récupérer tous les articles, il est possible de spécifier une limite
-    public static function getPosts(int $limit = null): ?PostModel
+    public static function getPosts(int $limit = null): ?array
     {
         // connexion pdo avec le pattern singleton
         $pdo = DataBase::connectPDO();
