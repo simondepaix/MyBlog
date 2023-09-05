@@ -37,11 +37,10 @@ class MainController
     protected function checkUserAuthorization(int $role): bool
     {
         // S'il y'a une session user
-        if (isset($_SESSION['userObject'])) {
-            // on stocke les données de la session dans une variable
-            $currentUser = $_SESSION['userObject'];
+        if (isset($_SESSION['user_id'])) {
+            // on stocke les données de la session dans une variable            
             //  on récupère le rôle
-            $currentUserRole = $currentUser->getRole();
+            $currentUserRole = $_SESSION['user_role'];
             // Si le rôle est inférieur ou égal au role demandé (le rôle 1 est le plus haut)
             if ($currentUserRole <= $role) {
                 // on renvoie true

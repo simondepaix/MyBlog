@@ -120,7 +120,8 @@ class UserController extends MainController
             // sinon on vérifie si le mot de passe de l'utilisateur en bdd et celui renseigné dans le formulaire concordent
             if (password_verify($_POST['password'], $user->getPassword())) {
                 // si c'est le cas, on stocke notre objet user dans la session
-                $_SESSION['userObject'] = $user;
+                $_SESSION['user_id'] = $user->getId();
+                $_SESSION['user_role'] = $user->getRole();                
                 // on stocke un message dans la propriété data pour l'afficher dans la vue
                 $this->data[] =  '<div class="alert alert-success" role="alert">connexion réussie ! votre compte doit être modifié par un admin pour que vous ayez accès à l\'administration</div>';
 
@@ -145,7 +146,8 @@ class UserController extends MainController
     public function logout(): void
     {
         // pour supprimer spécifiquement les données de userObject.
-        unset($_SESSION['userObject']);
+        unset($_SESSION['user_id']);
+        unset($_SESSION['user_role']);
         // pour détruire la session 
         session_destroy();
         // création de l'url de redirection

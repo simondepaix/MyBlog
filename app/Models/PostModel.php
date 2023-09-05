@@ -59,26 +59,12 @@ class PostModel
         return $post;
     }
 
-    // Si on souhaite éviter la duplication de code des méthodes insert et update qui son très similaires
-    // on peut regrouper les parties communes dans une méthode
-    // ça complexifie le code et sa lecture, est-ce vraiment nécéssaire ?
-
-    // private function executeQuery($sql, $params)
-    // {
-    //     $pdo = DataBase::connectPDO();
-    //     $user_id = $_SESSION['userObject']->getId();
-
-    //     $params['user_id'] = $user_id;        
-    //     $query = $pdo->prepare($sql);
-    //     $queryStatus = $query->execute($params);
-    //     return $queryStatus;
-    // }
 
     public function insertPost(): bool
     {
         $pdo = DataBase::connectPDO();
         // récupération de l'id de l'utilisateur via la superglobale $_SESSION
-        $user_id = $_SESSION['userObject']->getId();
+        $user_id = $_SESSION['user_id'];
         // requête sql protégée des injections sql 
         $sql = "INSERT INTO `posts`(`title`, `date`, `content`, `img`, `user_id`) VALUES (:title, :date, :content, :img, :user_id)";
         // associations des bonnes valeurs
@@ -99,7 +85,7 @@ class PostModel
     {
         $pdo = DataBase::connectPDO();
         // récupération de l'id de l'utilisateur via la superglobale $_SESSION
-        $user_id = $_SESSION['userObject']->getId();
+        $user_id = $_SESSION['user_id'];
         // requête sql protégée des injections sql 
         $sql = "UPDATE `posts` SET `title` = :title, `date` = :date, `content` = :content, `img` = :img, `user_id` = :user_id WHERE `id` = :id";
         // associations des bonnes valeurs
