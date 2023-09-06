@@ -1,6 +1,6 @@
 Options +FollowSymLinks
 RewriteEngine On
-RewriteBase /MyBlog/public/
+RewriteBase /3Wblog/MyBlog/public/
 
 # Réécrire l'URL pour la page d'accueil
 RewriteCond %{REQUEST_FILENAME} !-f

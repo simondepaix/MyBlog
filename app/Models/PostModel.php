@@ -55,7 +55,10 @@ class PostModel
         $query->execute();
         $query->setFetchMode(PDO::FETCH_CLASS, 'App\Models\PostModel');
         // fetch et non fetchAll car on récupère une seule entrée
-        $post = $query->fetch();        
+        $post = $query->fetch();       
+        if(!$post){
+            $post = null;
+        } 
         return $post;
     }
 

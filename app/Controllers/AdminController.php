@@ -43,7 +43,7 @@ class AdminController extends MainController
                     // on récupère l'article via son id grâce à la méthode statique getPostById                    
                     $post = PostModel::getPostById($_GET['id']);
                     // Si l'article la méthode est l'inverse de true
-                    if (!$post) {
+                    if (is_null($post)) {
                         // on stocke un message d'erreur dans la propriété data du controller parent
                         $this->data['error'] = '<div class="alert alert-danger" role="alert">L\'article n\'existe pas</div>';
                     } else {

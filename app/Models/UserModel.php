@@ -44,7 +44,7 @@ class UserModel
     }
 
     // méthode pour vérifier si un email est déjà pris
-    public function checkEmail()
+    public function checkEmail(): bool
     {
         // connexion pdo
         $pdo = DataBase::connectPDO();
@@ -82,6 +82,12 @@ class UserModel
         // on récupère le résultat sous la forme d'un objet de la classe AppUser
         $result = $pdoStatement->fetchObject('App\Models\UserModel');
 
+        // si l'email ne correspond pas, ça va renvoyer false et on va rentrer dans la condition (car différent de true)        
+        if(!$result){
+            
+            // on donne à result null car notre méthode doit renvoyer soit UserModel soit null
+            $result = null;
+        }
         // on renvoie le résultat
         return $result;
     }

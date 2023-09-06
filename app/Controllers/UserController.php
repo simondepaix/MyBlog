@@ -113,7 +113,7 @@ class UserController extends MainController
         $user = $user->getUserByEmail($_POST['email']);
 
         // si user renvoie false
-        if ($user === false) {
+        if (is_null($user)) {
             // il y a eu une erreur
             $errors = 1;
         } else {
