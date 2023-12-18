@@ -19,5 +19,5 @@ RewriteRule ^(.*)$ index.php?page=$1 [QSA,L]
 </pre>
 Vous allez peut être devoir trouver une solution pour que les assets soient bien chargés sur n'importe quelle page.
 
-- Créez un fichier .htaccess à mettre dans le dossier app avec le code suivant :
+- Créez un fichier .htaccess à mettre dans le dossier app afin de protéger notre code "sensible" avec le code suivant :
 DENY FROM ALL
