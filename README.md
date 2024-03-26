@@ -11,7 +11,7 @@ Ensuite, nous allons récupérer la data depuis la bdd et la mettre en forme dan
 Ces deux méthodes doivent :  
 - se connecter à la BDD
 - retourner le résultat de la bonne requête SQL avec PDO
-- Astuce, utilisez PDO::FETCH_CLASS pour retourner vos articles sous la forme de votre classe
+- FACULTATIF, utilisez PDO::FETCH_CLASS pour retourner vos articles sous la forme de votre classe 
 
 Côté controller :
 - Appelez la méthode getPosts($limit) et stockez sa valeur de retour dans une variable
